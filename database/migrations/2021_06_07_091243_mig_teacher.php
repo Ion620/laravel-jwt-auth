@@ -17,7 +17,7 @@ class MigTeacher extends Migration
             $table->id();
             $table->string('name_teacher',50);
             $table->string('position',70);
-            $table->string('scientific degree',10);
+            $table->string('scientific_degree',10);
             $table->timestamps();
         });
     }
