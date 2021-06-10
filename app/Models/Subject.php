@@ -13,8 +13,7 @@ class Subject extends Model
         'name_subj',
         'numb_semest'
     ];
-<<<<<<< HEAD
+
     protected $hidden = ['created_at', 'updated_at'];
-=======
->>>>>>> origin/api
+
 }

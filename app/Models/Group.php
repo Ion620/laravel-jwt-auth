@@ -12,8 +12,7 @@ class Group extends Model
     protected $fillable =[
         'name_group'
     ];
-<<<<<<< HEAD
+
     protected $hidden = ['created_at', 'updated_at'];
-=======
->>>>>>> origin/api
+
 }

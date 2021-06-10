@@ -11,13 +11,9 @@ class Audience extends Model
     protected $table='auditor';
     protected $fillable=[
         'capacity',
-<<<<<<< HEAD
         'name_aud',
         'timestamps'
     ];
     protected $hidden = ['created_at', 'updated_at'];
-=======
-        'name_aud'
-    ];
->>>>>>> origin/api
+
 }

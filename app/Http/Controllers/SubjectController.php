@@ -6,17 +6,14 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-<<<<<<< HEAD
-    public function index(Request $request){
+
+    public function index(Request $request)
+    {
         $param = $request->get('param');
         $subj = Subject::where('name_subj', 'like', "%{$param}%")
             ->OrWhere('numb_semest', 'like', "%{$param}%")
             ->paginate(10);
         return response()->json($subj);
-=======
-    public function index(){
-        return Subject::all();
->>>>>>> origin/api
     }
 
     public function create(Request $request){

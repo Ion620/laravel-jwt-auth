@@ -14,8 +14,7 @@ class Teacher extends Model
         'position',
         'scientific_degree'
     ];
-<<<<<<< HEAD
+
     protected $hidden = ['created_at', 'updated_at'];
-=======
->>>>>>> origin/api
+
 }

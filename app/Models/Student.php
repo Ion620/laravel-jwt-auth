@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $table ='student';
-    protected $fillable =[
+
+    protected $table = 'student';
+    protected $fillable = [
         'id_group',
         'name_student'
     ];
-<<<<<<< HEAD
+
     protected $hidden = ['created_at', 'updated_at'];
-=======
->>>>>>> origin/api
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class roupTabelSeeder extends Seeder
+class GroupTabelSeeder extends Seeder
 {
     /**
      * Run the database seeds.

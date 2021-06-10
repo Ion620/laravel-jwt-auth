@@ -7,16 +7,13 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
 
-<<<<<<< HEAD
-    public function index(Request $request){
+
+    public function index(Request $request)
+    {
         $param = $request->get('param');
         $student = Student::where('name_student', 'like', "%{$param}%")
             ->paginate(10);
         return response()->json($student);
-=======
-    public function index(){
-        return Student::all();
->>>>>>> origin/api
     }
 
     public function create(Request $request){
