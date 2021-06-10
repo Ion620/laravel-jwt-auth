@@ -24,6 +24,7 @@ class StudentTabelSeeder extends Seeder
                 'id_group' => $faker->$group,
                 'name_student' => $faker->name,
             ]);
+
         }
     }
 }

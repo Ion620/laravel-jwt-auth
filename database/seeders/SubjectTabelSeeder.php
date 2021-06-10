@@ -23,5 +23,6 @@ class SubjectTabelSeeder extends Seeder
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
             ]);
+            }
     }
 }

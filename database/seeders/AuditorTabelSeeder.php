@@ -18,11 +18,12 @@ class AuditorTabelSeeder extends Seeder
         $faker = Faker::create();
         foreach (range(1,10) as $index) {
             DB::table('auditor')->insert([
-                'capacity' => $faker->numberBetween(1,30),
-                'name_aud' => $faker->numberBetween(1,100),
+                'capacity' => $faker->numberBetween(1, 30),
+                'name_aud' => $faker->numberBetween(1, 100),
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
             ]);
+
         }
     }
 }

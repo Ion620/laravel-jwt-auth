@@ -21,9 +21,10 @@ class TeacherTabelSeeder extends Seeder
             DB::table('auditor')->insert([
                 'name_teacher' => $faker->name,
                 'position' => $faker->text,
-                'scientific_degree'=>$faker->text,
+                'scientific_degree' => $faker->text,
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
             ]);
+        }
     }
 }
