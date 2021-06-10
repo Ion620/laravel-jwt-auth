@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
+<<<<<<< HEAD
     public function index(Request $request){
         $param = $request->get('param');
         $group = Group::where('name_group', 'like', "%{$param}%")
         ->paginate(10);
         return response()->json($group);
+=======
+    public function index(){
+        return Group::all();
+>>>>>>> origin/api
     }
 
     public function create(Request $request){

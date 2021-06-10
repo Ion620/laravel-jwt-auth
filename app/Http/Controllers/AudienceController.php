@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 
 class AudienceController extends Controller
 {
+<<<<<<< HEAD
     public function index(Request $request){
         $param = $request->get('param');
         $audience = Audience::where('capacity', 'like', "%{$param}%")
             ->OrWhere('name_aud', 'like', "%{$param}%")
             ->paginate(10);
         return response()->json($audience);
+=======
+    public function index(){
+        return Audience::all();
+>>>>>>> origin/api
     }
 
     public function create(Request $request){

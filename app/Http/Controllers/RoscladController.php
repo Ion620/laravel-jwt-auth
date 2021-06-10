@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 
 class RoscladController extends Controller
 {
+<<<<<<< HEAD
     public function index(Request $request){
         $param = $request->get('param');
         $rosclad = Rosclad::where('numb_lec', 'like', "%{$param}%")
             ->OrWhere('day', 'like', "%{$param}%")
             ->paginate(10);
         return response()->json($rosclad);
+=======
+    public function index(){
+        return Rosclad::all();
+>>>>>>> origin/api
     }
 
     public function create(Request $request){

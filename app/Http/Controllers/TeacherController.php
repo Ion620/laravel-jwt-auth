@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+<<<<<<< HEAD
     public function index(Request $request){
         $param = $request->get('param');
         $teacher = Teacher::where('name_teacher', 'like', "%{$param}%")
@@ -15,13 +16,21 @@ class TeacherController extends Controller
         ->get();
 
         return response()->json($teacher);
+=======
+    public function index(){
+        return Teacher::all();
+>>>>>>> origin/api
     }
 
     public function create(Request $request){
         $request->validate([
             'name_teacher',
             'position',
+<<<<<<< HEAD
             'scientific_degree'
+=======
+            'scientific degree'
+>>>>>>> origin/api
         ]);
         return Teacher::create($request->all());
     }
@@ -31,7 +40,11 @@ class TeacherController extends Controller
         $request->validate([
             'name_teacher',
             'position',
+<<<<<<< HEAD
             'scientific_degree'
+=======
+            'scientific degree'
+>>>>>>> origin/api
         ]);
         $group = Teacher::find($id);
         $group->update($request->all());

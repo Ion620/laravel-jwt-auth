@@ -13,5 +13,8 @@ class Student extends Model
         'id_group',
         'name_student'
     ];
+<<<<<<< HEAD
     protected $hidden = ['created_at', 'updated_at'];
+=======
+>>>>>>> origin/api
 }

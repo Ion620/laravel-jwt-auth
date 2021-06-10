@@ -17,5 +17,8 @@ class Rosclad extends Model
         'numb_lec',
         'day'
     ];
+<<<<<<< HEAD
     protected $hidden = ['created_at', 'updated_at'];
+=======
+>>>>>>> origin/api
 }
