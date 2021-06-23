@@ -8,6 +8,7 @@ use App\Http\Controllers\RoscladController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +63,11 @@ Route::put('/audience/{id}',[AudienceController::class,'update']);
 Route::delete('/audience/{id}',[AudienceController::class,'delete']);
 
 
-Route::get('/rocclad',[RoscladController::class,'index']);
+Route::get('/rosclad',[RoscladController::class,'index']);
 Route::post('/rosclad',[RoscladController::class,'create']);
 Route::put('/rosclad/{id}',[RoscladController::class,'update']);
 Route::delete('/rosclad/{id}',[RoscladController::class,'delete']);
+
+
+
+Route::post('/send', [PDFController::class, 'index']);

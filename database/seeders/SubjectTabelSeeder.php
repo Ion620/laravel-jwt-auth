@@ -15,13 +15,14 @@ class SubjectTabelSeeder extends Seeder
      */
     public function run()
     {
+        $sub = ['Компютерні мережі','Алгебра','Диф рівняння','Бази даних','Соціологія','Фіолософія','Іт-бізнес','УМЛ','UI/UX','WEB-технології та WEB-дизайн'];
         $faker = Faker::create();
         foreach (range(1,10) as $index) {
-            DB::table('auditor')->insert([
-                'name_subj' => $faker->name,
+            DB::table('subj')->insert([
+                'name_subj' => $faker->randomElement($sub),
                 'numb_semest' => $faker->numberBetween(1,2),
-                'created_at' => $faker->dateTime(),
-                'updated_at' => $faker->dateTime(),
+                'created_at' => $faker->dateTime($max='now'),
+                'updated_at' => $faker->dateTime($max='now'),
             ]);
             }
     }

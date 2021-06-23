@@ -14,7 +14,6 @@ class Teacher extends Model
         'position',
         'scientific_degree'
     ];
-
     protected $hidden = ['created_at', 'updated_at'];
 
 }

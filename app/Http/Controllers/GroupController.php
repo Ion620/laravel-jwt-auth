@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-
     public function index(Request $request)
     {
         $param = $request->get('param');

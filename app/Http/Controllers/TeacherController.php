@@ -6,16 +6,13 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-
     public function index(Request $request)
     {
         $param = $request->get('param');
         $teacher = Teacher::where('name_teacher', 'like', "%{$param}%")
             ->orWhere('position', 'like', "%{$param}%")
             ->orWhere('scientific_degree', 'like', "%{$param}%")
-            ->paginate(10)
-            ->get();
-
+            ->paginate(5);
         return response()->json($teacher);
     }
 

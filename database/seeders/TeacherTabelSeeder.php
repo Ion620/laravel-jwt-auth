@@ -16,14 +16,16 @@ class TeacherTabelSeeder extends Seeder
 
     public function run()
     {
+
+        $nauka=['Доцент','Старший','Професор'];
         $faker = Faker::create();
-        foreach (range(1,10) as $index) {
-            DB::table('auditor')->insert([
+        foreach (range(1,30) as $index) {
+            DB::table('teacher')->insert([
                 'name_teacher' => $faker->name,
-                'position' => $faker->text,
-                'scientific_degree' => $faker->text,
-                'created_at' => $faker->dateTime(),
-                'updated_at' => $faker->dateTime(),
+                'position' => 'Викладач',
+                'scientific_degree' => $faker->randomElement($nauka),
+                'created_at' => $faker->dateTime($max='now'),
+                'updated_at' => $faker->dateTime($max='now'),
             ]);
         }
     }

@@ -17,12 +17,14 @@ class StudentTabelSeeder extends Seeder
      */
     public function run()
     {
-        $group = Group::all()->pluck('id');
+        $groupID = DB::table('group')->pluck('id');
         $faker = Faker::create();
-        foreach (range(1,2) as $index) {
+        foreach (range(1,50) as $index) {
             DB::table('student')->insert([
-                'id_group' => $faker->$group,
+                'id_group' => $faker->randomElement($groupID),
                 'name_student' => $faker->name,
+                'created_at' => $faker->dateTime($max = 'now'),
+                'updated_at' => $faker->dateTime($max = 'now'),
             ]);
 
         }
