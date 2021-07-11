@@ -2,47 +2,30 @@
 
 namespace App\Http\Controllers;
 use App\Models\Rosclad;
+use App\Repositories\RoscladRepository;
 use Illuminate\Http\Request;
 
 class RoscladController extends Controller
 {
-
+    protected $roscladRepository;
+    public function __construct(RoscladRepository $roscladRepository)
+    {
+        $this->roscladRepository = $roscladRepository;
+    }
     public function index(Request $request)
     {
-        $param = $request->get('param');
-        $rosclad = Rosclad::where('numb_lec', 'like', "%{$param}%")
-            ->OrWhere('day', 'like', "%{$param}%")
-            ->paginate(10);
-        return response()->json($rosclad);
+        return $this->roscladRepository->index($request);
     }
-
-    public function create(Request $request){
-        $request->validate([
-            'id_group',
-            'id_subj',
-            'id_teacher',
-            'id_aud',
-            'numb_lec',
-            'day'
-        ]);
-        return Rosclad::create($request->all());
-    }
-
-    public function update(Request $request, $id)
+    public function create(Request $request)
     {
-        $request->validate([
-            'id_group',
-            'id_subj',
-            'id_teacher',
-            'id_aud',
-            'numb_lec',
-            'day'
-        ]);
-        $group = Rosclad::find($id);
-        $group->update($request->all());
-        return $group;
+        return $this->roscladRepository->create($request);
     }
-    public function delete($id){
-        return Rosclad::destroy($id);
+    public function update(Request $request,$id)
+    {
+        return $this->roscladRepository->update($request,$id);
+    }
+    public function delete($id)
+    {
+        return $this->roscladRepository->update($id);
     }
 }

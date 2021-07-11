@@ -2,38 +2,30 @@
 
 namespace App\Http\Controllers;
 use App\Models\Audience;
+use App\Repositories\AudienceRepository;
 use Illuminate\Http\Request;
 
 class AudienceController extends Controller
 {
+    protected $audienceRepository;
+    public function __construct(AudienceRepository $audienceRepository)
+    {
+        $this->audienceRepository = $audienceRepository;
+    }
     public function index(Request $request)
     {
-        $param = $request->get('param');
-        $audience = Audience::where('capacity', 'like', "%{$param}%")
-            ->OrWhere('name_aud', 'like', "%{$param}%")
-            ->paginate(10);
-        return response()->json($audience);
+        return $this->audienceRepository->index($request);
     }
-
-    public function create(Request $request){
-        $request->validate([
-            'capacity',
-            'name_aud'
-        ]);
-        return Audience::create($request->all());
-    }
-
-    public function update(Request $request, $id)
+    public function create(Request $request)
     {
-        $request->validate([
-            'capacity',
-            'name_aud'
-        ]);
-        $group = Audience::find($id);
-        $group->update($request->all());
-        return $group;
+        return $this->audienceRepository->create($request);
     }
-    public function delete($id){
-        return Audience::destroy($id);
+    public function update(Request $request,$id)
+    {
+        return $this->audienceRepository->update($request,$id);
+    }
+    public function delete($id)
+    {
+        return $this->audienceRepository->update($id);
     }
 }

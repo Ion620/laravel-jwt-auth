@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 use App\Http\Controllers\PDFController;
+use App\Repositories\PdfRepository;
 use Illuminate\Console\Command;
 
 class SendEmails extends Command
@@ -25,10 +26,13 @@ class SendEmails extends Command
      *
      * @return void
      */
-    public function __construct()
+    protected $pdfRepository;
+    public function __construct(PdfRepository $pdfRepository)
     {
         parent::__construct();
+        $this->pdfRepository = $pdfRepository;
     }
+
 
     /**
      * Execute the console command.
@@ -37,7 +41,6 @@ class SendEmails extends Command
      */
     public function handle()
     {
-        $controller = new PDFController(); // make sure to import the controller
-        $controller->index();
+        $this->pdfRepository->index();
     }
 }

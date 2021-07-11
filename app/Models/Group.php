@@ -15,4 +15,7 @@ class Group extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function groups(){
+        return $this->hasMany(Student::class,'id_group');
+    }
 }

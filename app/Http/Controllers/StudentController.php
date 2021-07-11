@@ -2,39 +2,33 @@
 
 namespace App\Http\Controllers;
 use App\Models\Student;
+use App\Repositories\StudentRepository;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-
-
+    protected $studentRepository;
+    public function __construct(StudentRepository $studentRepository)
+    {
+        $this->studentRepository = $studentRepository;
+    }
     public function index(Request $request)
     {
-        $param = $request->get('param');
-        $student = Student::where('name_student', 'like', "%{$param}%")
-            ->paginate(10);
-        return response()->json($student);
+        return $this->studentRepository->index($request);
     }
-
-    public function create(Request $request){
-        $request->validate([
-            'id_group',
-            'name_student'
-        ]);
-        return Student::create($request->all());
-    }
-
-    public function update(Request $request, $id)
+    public function create(Request $request)
     {
-        $request->validate([
-            'id_group',
-            'name_student'
-        ]);
-        $group = Student::find($id);
-        $group->update($request->all());
-        return $group;
+        return $this->studentRepository->create($request);
     }
-    public function delete($id){
-        return Student::destroy($id);
+    public function update(Request $request,$id)
+    {
+        return $this->studentRepository->update($request,$id);
     }
+    public function delete($id)
+    {
+        return $this->studentRepository->update($id);
+    }
+
+
+
 }

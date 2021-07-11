@@ -20,4 +20,21 @@ class Rosclad extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function groups()
+    {
+        return $this->belongsTo(Group::class,'id_group');
+    }
+    public function subjects()
+    {
+        return $this->belongsTo(Subject::class,'id_subj');
+    }
+    public function teachers()
+    {
+        return $this->belongsTo(Teacher::class,'id_teacher');
+    }
+    public function auditoris()
+    {
+        return $this->belongsTo(Audience::class,'id_aud');
+    }
+
 }
