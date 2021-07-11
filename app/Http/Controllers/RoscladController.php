@@ -26,6 +26,6 @@ class RoscladController extends Controller
     }
     public function delete($id)
     {
-        return $this->roscladRepository->update($id);
+        return $this->roscladRepository->delete($id);
     }
 }

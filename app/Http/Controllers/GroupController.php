@@ -1,37 +1,46 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Repositories\Interfaces\GroupRepositoryInterface;
+use App\Http\Requests\CreateGroupRequest;
+use App\Http\Requests\DeleteGroupRequest;
+use App\Http\Requests\UpdateGroupRequest;
 use App\Repositories\GroupRepository;
+use App\Repositories\RoscladRepository;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class GroupController extends Controller
 {
-    protected $groupRepository;
-    //public function __construct(GroupRepository $groupRepository)
-    //{
-     //   $this->groupRepository = $groupRepository;
-   // }
-    public function __construct(GroupRepositoryInterface $groupRepository){
-        $this->groupRepository = $groupRepository;
-    }
-    public function index(Request $request)
+    public function getGroup(Request $request)
     {
-        return $this->groupRepository->index($request);
+        $response = GroupRepository::getGroup($request);
+        return response()->json($response, $response['status_code']);
     }
 
-    public function create(Request $request)
+    public function create(CreateGroupRequest $request)
     {
-        return $this->groupRepository->create($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
 
-    public function update(Request $request,$id)
+
+    // PUT /jobs/ID
+    public function update($id, UpdateGroupRequest $request)
     {
-        return $this->groupRepository->update($request,$id);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
 
-    public function delete($id)
-    {
-        return $this->groupRepository->update($id);
+    //public function delete(DeleteGroupRequest $request,$id){
+     //   $response = $request->perform($id);
+      //  return response()->json($response,$response['status_code']);
+    //}
+
+    public function delete($id,DeleteGroupRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
+
 }

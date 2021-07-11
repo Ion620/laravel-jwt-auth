@@ -25,7 +25,7 @@ class SubjectController extends Controller
     }
     public function delete($id)
     {
-        return $this->subjectRepository->update($id);
+        return $this->subjectRepository->delete($id);
     }
 
 }

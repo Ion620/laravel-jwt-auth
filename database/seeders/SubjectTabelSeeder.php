@@ -15,7 +15,7 @@ class SubjectTabelSeeder extends Seeder
      */
     public function run()
     {
-        $sub = ['Компютерні мережі','Алгебра','Диф рівняння','Бази даних','Соціологія','Фіолософія','Іт-бізнес','УМЛ','UI/UX','WEB-технології та WEB-дизайн'];
+        $sub = ['Compiuterni mereji','Algebra','Dif rivneanea','Baz danih','Sotiologia','Filosofia','It-biznes','UML','UI/UX','WEB'];
         $faker = Faker::create();
         foreach (range(1,10) as $index) {
             DB::table('subj')->insert([

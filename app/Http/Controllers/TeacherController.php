@@ -26,6 +26,6 @@ class TeacherController extends Controller
     }
     public function delete($id)
     {
-        return $this->teacherRepository->update($id);
+        return $this->teacherRepository->delete($id);
     }
 }

@@ -16,4 +16,8 @@ class Teacher extends Model
     ];
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function rosclads()
+    {
+        return $this->hasMany(Rosclad::class,'id_teacher');
+    }
 }

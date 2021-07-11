@@ -26,7 +26,7 @@ class StudentController extends Controller
     }
     public function delete($id)
     {
-        return $this->studentRepository->update($id);
+        return $this->studentRepository->delete($id);
     }
 
 

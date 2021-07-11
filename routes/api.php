@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\api\GroupsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
@@ -33,7 +34,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
-Route::get('/group',[GroupController::class,'index']);
+Route::get('/group',[GroupController::class,'getGroup']);
 Route::post('/group',[GroupController::class,'create']);
 Route::put('/group/{id}',[GroupController::class,'update']);
 Route::delete('/group/{id}',[GroupController::class,'delete']);

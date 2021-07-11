@@ -2,18 +2,52 @@
 <html>
 <head>
     <title>ItsolutionStuff.com</title>
+    <style>
+        caption{
+            font-size: 35px;
+            font-weight: 900;
+        }
+        table{
+            table-layout: fixed;
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid purple;
+
+        }
+        thead th{
+            background-color: red;
+        }
+        tbody tr {
+          background-color: cadetblue;
+
+
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td{
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
 
 
 <table>
+
+        @foreach($rosclad as $key => $value)
+            @if ($loop->first)
+                <caption>{{ $value->teachers->name_teacher}}</caption>
+            @endif
+        @endforeach
+
     <thead>
     <tr>
         <th>Number lec</th>
         <th>Name Group</th>
         <th>Name Subj</th>
-        <th>Name Teacher</th>
-        <th>Name Adutiorie</th>
+        <th>Name Auditorie</th>
     </tr>
     </thead>
     <tbody>
@@ -35,11 +69,12 @@
         <tr>
             <td>{{ $item2->numb_lec}}</td>
             <td>{{ $item2->groups->name_group}}</td>
-            <td>{{ $item2->subjects->name_subj}}</td>
-            <td>{{ $item2->teachers->name_teacher}}</td>
+            <td>{{ $item2->subjects->name_subj}} <br>{{ $item2->day}} week </td>
+
             <td>{{ $item2->auditoris->name_aud}}</td>
         </tr>
     @endforeach
+
     </tbody>
 </table>
 </body>

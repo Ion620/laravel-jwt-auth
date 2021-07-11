@@ -26,6 +26,6 @@ class AudienceController extends Controller
     }
     public function delete($id)
     {
-        return $this->audienceRepository->update($id);
+        return $this->audienceRepository->delete($id);
     }
 }
