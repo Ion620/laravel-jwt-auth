@@ -33,6 +33,7 @@ class MigRosklad extends Migration
                 ->onDelete('cascade');
             $table->integer('numb_lec');
             $table->integer('day');
+            $table->
             $table->timestamps();
         });
     }

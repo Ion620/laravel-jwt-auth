@@ -1,31 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Teacher\CreateTeacherRequest;
+use App\Http\Requests\Teacher\DeleteTeacherRequest;
+use App\Http\Requests\Teacher\UpdateTeacherRequest;
 use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    protected $teacherRepository;
-    public function __construct(TeacherRepository $teacherRepository)
+    public function getTeacher(Request $request)
     {
-        $this->teacherRepository = $teacherRepository;
+        $response = TeacherRepository::getTeacher($request);
+        return response()->json($response, $response['status_code']);
     }
-    public function index(Request $request)
+
+    public function create(CreateTeacherRequest $request)
     {
-        return $this->teacherRepository->index($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function create(Request $request)
+
+
+    // PUT /jobs/ID
+    public function update($id, UpdateTeacherRequest $request)
     {
-        return $this->teacherRepository->create($request);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function update(Request $request,$id)
-    {
-        return $this->teacherRepository->update($request,$id);
-    }
-    public function delete($id)
-    {
-        return $this->teacherRepository->delete($id);
+
+
+
+    public function delete($id,DeleteTeacherRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
 }

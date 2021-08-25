@@ -1,31 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Audience\CreateAudienceRequest;
+use App\Http\Requests\Audience\DeleteAudienceRequest;
+use App\Http\Requests\Audience\UpdateAudienceRequest;
 use App\Models\Audience;
 use App\Repositories\AudienceRepository;
 use Illuminate\Http\Request;
 
 class AudienceController extends Controller
 {
-    protected $audienceRepository;
-    public function __construct(AudienceRepository $audienceRepository)
+    public function getAudience(Request $request)
     {
-        $this->audienceRepository = $audienceRepository;
+        $response = AudienceRepository::getAudience($request);
+        return response()->json($response, $response['status_code']);
     }
-    public function index(Request $request)
+
+    public function create(CreateAudienceRequest $request)
     {
-        return $this->audienceRepository->index($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function create(Request $request)
+
+
+    // PUT /jobs/ID
+    public function update($id, UpdateAudienceRequest $request)
     {
-        return $this->audienceRepository->create($request);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function update(Request $request,$id)
-    {
-        return $this->audienceRepository->update($request,$id);
-    }
-    public function delete($id)
-    {
-        return $this->audienceRepository->delete($id);
+
+
+
+    public function delete($id,DeleteAudienceRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
 }

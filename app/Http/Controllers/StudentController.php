@@ -1,32 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Action\Student\CreateStudentAction;
+use App\Http\Action\Student\DeleteStudentAction;
+use App\Http\Action\Student\UpdateStudentAction;
+use App\Http\Requests\Student\CreateStudentRequest;
+use App\Http\Requests\Student\DeleteStudentRequest;
+use App\Http\Requests\Student\UpdateStudentRequest;
 use App\Models\Student;
 use App\Repositories\StudentRepository;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    protected $studentRepository;
-    public function __construct(StudentRepository $studentRepository)
+    public function getStudent(Request $request)
     {
-        $this->studentRepository = $studentRepository;
+        $response = StudentRepository::getStudent($request);
+        return response()->json($response, $response['status_code']);
     }
-    public function index(Request $request)
+
+    public function create(CreateStudentRequest $request)
     {
-        return $this->studentRepository->index($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function create(Request $request)
+
+
+    // PUT /jobs/ID
+    public function update($id, UpdateStudentRequest $request)
     {
-        return $this->studentRepository->create($request);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function update(Request $request,$id)
-    {
-        return $this->studentRepository->update($request,$id);
-    }
-    public function delete($id)
-    {
-        return $this->studentRepository->delete($id);
+
+
+
+    public function delete($id,DeleteStudentRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
 
 

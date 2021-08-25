@@ -40,31 +40,31 @@ Route::put('/group/{id}',[GroupController::class,'update']);
 Route::delete('/group/{id}',[GroupController::class,'delete']);
 //Route::resource('group',GroupController::class);
 
-Route::get('/student',[StudentController::class,'index']);
+Route::get('/student',[StudentController::class,'getStudent']);
 Route::post('/student',[StudentController::class,'create']);
 Route::put('/student/{id}',[StudentController::class,'update']);
 Route::delete('/student/{id}',[StudentController::class,'delete']);
 
 
-Route::get('/subject',[SubjectController::class,'index']);
+Route::get('/subject',[SubjectController::class,'getSubject']);
 Route::post('/subject',[SubjectController::class,'create']);
 Route::put('/subject/{id}',[SubjectController::class,'update']);
 Route::delete('/subject/{id}',[SubjectController::class,'delete']);
 
 
-Route::get('/teacher',[TeacherController::class,'index']);
+Route::get('/teacher',[TeacherController::class,'getTeacher']);
 Route::post('/teacher',[TeacherController::class,'create']);
 Route::put('/teacher/{id}',[TeacherController::class,'update']);
 Route::delete('/teacher/{id}',[TeacherController::class,'delete']);
 
 
-Route::get('/audience',[AudienceController::class,'index']);
+Route::get('/audience',[AudienceController::class,'getAudience']);
 Route::post('/audience',[AudienceController::class,'create']);
 Route::put('/audience/{id}',[AudienceController::class,'update']);
 Route::delete('/audience/{id}',[AudienceController::class,'delete']);
 
 
-Route::get('/rosclad',[RoscladController::class,'index']);
+Route::get('/rosclad',[RoscladController::class,'getRosclad']);
 Route::post('/rosclad',[RoscladController::class,'create']);
 Route::put('/rosclad/{id}',[RoscladController::class,'update']);
 Route::delete('/rosclad/{id}',[RoscladController::class,'delete']);

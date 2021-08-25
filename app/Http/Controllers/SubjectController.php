@@ -1,31 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Subject\CreateSubjectRequest;
+use App\Http\Requests\Subject\DeleteSubjectRequest;
+use App\Http\Requests\Subject\UpdateSubjectRequest;
 use App\Repositories\SubjectRepository;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    protected $subjectRepository;
-    public function __construct(SubjectRepository $subjectRepository)
+    public function getSubject(Request $request)
     {
-        $this->subjectRepository = $subjectRepository;
+        $response = SubjectRepository::getSubject($request);
+        return response()->json($response, $response['status_code']);
     }
-    public function index(Request $request)
+
+    public function create(CreateSubjectRequest $request)
     {
-        return $this->subjectRepository->index($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function create(Request $request)
+
+
+    // PUT /jobs/ID
+    public function update($id, UpdateSubjectRequest $request)
     {
-        return $this->subjectRepository->create($request);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function update(Request $request,$id)
-    {
-        return $this->subjectRepository->update($request,$id);
-    }
-    public function delete($id)
-    {
-        return $this->subjectRepository->delete($id);
+
+
+
+    public function delete($id,DeleteSubjectRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
 
 }

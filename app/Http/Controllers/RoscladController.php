@@ -1,31 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Rosclad\CreateRoscladRequest;
+use App\Http\Requests\Rosclad\DeleteRoscladRequest;
+use App\Http\Requests\Rosclad\UpdateRoscladRequest;
 use App\Models\Rosclad;
 use App\Repositories\RoscladRepository;
 use Illuminate\Http\Request;
 
 class RoscladController extends Controller
 {
-    protected $roscladRepository;
-    public function __construct(RoscladRepository $roscladRepository)
+    public function getRosclad(Request $request)
     {
-        $this->roscladRepository = $roscladRepository;
+        $response = RoscladRepository::getRosclad($request);
+        return response()->json($response, $response['status_code']);
     }
-    public function index(Request $request)
+
+    public function create(CreateRoscladRequest $request)
     {
-        return $this->roscladRepository->index($request);
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function create(Request $request)
+
+
+    // PUT /jobs/ID
+    public function update($id, UpdateRoscladRequest $request)
     {
-        return $this->roscladRepository->create($request);
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response, $response['status_code']);
     }
-    public function update(Request $request,$id)
-    {
-        return $this->roscladRepository->update($request,$id);
-    }
-    public function delete($id)
-    {
-        return $this->roscladRepository->delete($id);
+
+
+
+    public function delete($id,DeleteRoscladRequest $request){
+        $request->id=$id;
+        $response = $request->perform();
+        return response()->json($response,$response['status_code']);
     }
 }
